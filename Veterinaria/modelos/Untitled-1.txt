@@ -1,0 +1,44 @@
+<?php
+    session_start();
+?>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto shadow p-3 mb-5 bg-ligth rounded">
+            <center><br><img src="vistas/assets/images/logohuella.png" width="100px" height="100px"></center>
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <form class="form-singin" method="POST">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping"><img src="vistas/assets/img/person.png" alt=""></span>
+                            </div>
+                            <input type="text" class="form-control" name="username" aria-describedby="addon-wrapping">
+                        </div><br>
+                        <div class="input-group" style="padding-bottom: 15px;">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping"><img src="vistas/assets/img/lock.png" alt=""></span>
+                            </div>
+                            <input type="password" class="form-control" name="password" aria-describedby="addon-wrapping">
+                        </div>
+                        <div class="row justify-content-center">
+                            <button type="submit" class="btn btn-success" name="entrar">Entrar 
+                                <img src="vistas/assets/img/send.png" alt="">
+                            </button>
+                        </div>
+                    </form>
+                    <?php
+	$ingreso = new controlador();
+	$ingreso -> LoginUsuariosControlador();
+
+	if (isset($_GET["action"])) {
+		if ($_GET["action"]=="error") {
+			echo "Verifique los datos";
+		}
+	}
+?>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>

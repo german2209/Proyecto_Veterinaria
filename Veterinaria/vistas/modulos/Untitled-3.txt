@@ -1,0 +1,17 @@
+<?php 
+    session_start();
+    error_reporting(0);
+    
+ ?>
+    <nav class="navbar shadow p-3 mb-5 navbar-light rounded" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">
+            <img src="vistas/assets/images/logohuella.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            Veterinaria
+        </a>
+        <form class="form-inline my-2 my-lg-0">
+            <a class="nav-link" href="index.php?action=login">Iniciar sesion</a>
+        </form>
+    </nav>
+
+</body>
+</html>
