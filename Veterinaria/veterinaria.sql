@@ -291,8 +291,8 @@ CREATE TABLE `vistamas` (
 -- Estructura Stand-in para la vista `vistamascota`
 -- (Véase abajo para la vista actual)
 --
-CREATE TABLE `vistamascota` (
-);
+-- CREATE TABLE `vistamascota` (
+-- );
 
 -- --------------------------------------------------------
 
@@ -343,7 +343,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vistamascota`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vistamascota`  AS  select `mascotas`.`id_mascota` AS `id_mascota`,`mascotas`.`especie` AS `especie`,`mascotas`.`raza` AS `raza`,`mascotas`.`sexo` AS `sexo`,`mascotas`.`edad` AS `edad`,`mascotas`.`tamano` AS `tamano`,`mascotas`.`peso` AS `peso`,`mascotas`.`enfermedades` AS `enfermedades`,`mascotas`.`observaciones` AS `observaciones`,`clientes`.`nombre` AS `nombre` from (`mascotas` join `clientes`) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vistamascota`  AS  select `mascotas`.`id_mascota` AS `id_mascota`,`mascotas`.`especie` AS `especie`,`mascotas`.`raza` AS `raza`,`mascotas`.`sexo` AS `sexo`,`mascotas`.`edad` AS `edad`,`mascotas`.`tamano` AS `tamano`,`mascotas`.`peso` AS `peso`,`mascotas`.`enfermedades` AS `enfermedades`,`mascotas`.`observaciones` AS `observaciones`,`clientes`.`nombreC` AS `nombre` from (`mascotas` join `clientes`) ;
 
 -- --------------------------------------------------------
 
@@ -494,7 +494,107 @@ ALTER TABLE `citas`
 ALTER TABLE `compras`
   ADD CONSTRAINT `fk_producto_co` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`);
 
+----
+464
+ALTER TABLE `servicios`
+465
+  MODIFY `id_servicio` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+466
+​
+467
 --
+468
+-- AUTO_INCREMENT de la tabla `usuarios2`
+469
+--
+470
+ALTER TABLE `usuarios2`
+471
+  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+472
+​
+473
+--
+474
+-- AUTO_INCREMENT de la tabla `ventas`
+475
+--
+476
+ALTER TABLE `ventas`
+477
+  MODIFY `id_venta` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+478
+​
+479
+--
+480
+-- Restricciones para tablas volcadas
+481
+--
+482
+​
+483
+--
+484
+-- Filtros para la tabla `citas`
+485
+--
+486
+ALTER TABLE `citas`
+487
+  ADD CONSTRAINT `fk_cliente_ci` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`),
+488
+  ADD CONSTRAINT `fk_empleado_ci` FOREIGN KEY (`id_empleado`) REFERENCES `empleados` (`id_empleado`),
+489
+  ADD CONSTRAINT `fk_servicio_ci` FOREIGN KEY (`id_servicio`) REFERENCES `servicios` (`id_servicio`);
+490
+​
+491
+--
+492
+-- Filtros para la tabla `compras`
+493
+--
+494
+ALTER TABLE `compras`
+495
+  ADD CONSTRAINT `fk_producto_co` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`);
+496
+​
+497
+--
+498
+-- Filtros para la tabla `mascotas`
+499
+--
+500
+ALTER TABLE `mascotas`
+501
+  ADD CONSTRAINT `fk_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`);
+502
+​
+503
+--
+504
+-- Filtros para la tabla `ventas`
+505
+--
+506
+ALTER TABLE `ventas`
+507
+  ADD CONSTRAINT `fk_producto_ve` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`);
+508
+COMMIT;
+509
+​
+510
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+511
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+512
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+513
+
 -- Filtros para la tabla `mascotas`
 --
 ALTER TABLE `mascotas`
